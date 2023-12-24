@@ -49,3 +49,7 @@ Resources:
               - Effect: 'Allow'
                 Action: '*'
                 Resource: '*'
+  NukeOnDeleteCustomResource:
+    Type: Custom::CustomResource
+    Properties:
+      ServiceToken: !GetAtt CloudnukeFunction.Arn
