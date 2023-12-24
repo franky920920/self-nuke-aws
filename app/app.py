@@ -112,7 +112,7 @@ def lambda_handler(event, context):
 
         try:
             result = subprocess.run([binary_path, "aws", "--region", os.environ['AWS_REGION'],
-                                     "--config", "/tmp/config.yml"], stdout=subprocess.PIPE)
+                                     "--config", "/tmp/config.yml", "--force"], stdout=subprocess.PIPE)
             logger.info("Command output:\n---\n{}\n---".format(clean_console_output(result.stdout.decode('UTF-8'))))
             cfnresponse(event, context, SUCCESS, {})
         except Exception as e:
